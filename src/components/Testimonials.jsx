@@ -2,78 +2,102 @@ import React from 'react';
 
 const Testimonials = () => {
   return (
-    <section id="testimonials" className="section bg-alt">
+    <section id="testimonials" className="section bg-grid">
       <div className="container">
         <div className="section-header text-center" data-aos="fade-up">
-          <h2 className="section-title mono-font">{'<'} Console_Logs {'/>'}</h2>
-          <p className="section-subtitle">Output from our partners.</p>
+          <h2 className="section-title">Trusted by <span className="text-gradient">Innovators</span></h2>
+          <p className="section-subtitle">Partners who built their future with us.</p>
         </div>
 
         <div className="grid">
-          <div className="log-card" data-aos="fade-up">
-            <div className="terminal-header">
-              <div className="dot red"></div>
-              <div className="dot yellow"></div>
-              <div className="dot green"></div>
-              <span>review.json</span>
+          <div className="review-card glass-panel" data-aos="fade-up">
+            <div className="stars">★★★★★</div>
+            <p className="review-text">
+              "CodeBlazeLabs delivered the MVP faster than expected. The code quality is exceptional and the architecture is ready for scale."
+            </p>
+            <div className="reviewer">
+              <div className="avatar">TI</div>
+              <div className="info">
+                <div className="name">TechStart Inc</div>
+                <div className="role">CTO</div>
+              </div>
             </div>
-            <pre className="log-content">
-              {`{
-  "client": "TechStart Inc",
-  "rating": 5.0,
-  "comment": "CodeBlazeLabs delivered the MVP faster than expected. The code quality is exceptional."
-}`}
-            </pre>
           </div>
 
-          <div className="log-card" data-aos="fade-up" data-aos-delay="100">
-            <div className="terminal-header">
-              <div className="dot red"></div>
-              <div className="dot yellow"></div>
-              <div className="dot green"></div>
-              <span>feedback.log</span>
+          <div className="review-card glass-panel" data-aos="fade-up" data-aos-delay="100">
+            <div className="stars">★★★★★</div>
+            <p className="review-text">
+              "Detailed attention to backend architecture saved us months of scaling debt. Their AI integration was seamless."
+            </p>
+            <div className="reviewer">
+              <div className="avatar">JD</div>
+              <div className="info">
+                <div className="name">John Doe</div>
+                <div className="role">Founder, SaaS Co.</div>
+              </div>
             </div>
-            <pre className="log-content">
-              {`[INFO] Project completed successfully
-[INFO] Deployment: Zero downtime
-[USER] "Detailed attention to backend architecture saved us months of scaling debt."`}
-            </pre>
           </div>
         </div>
       </div>
 
       <style>{`
-        .log-card {
-          background: #0d1117;
+        .review-card {
+          padding: 2.5rem;
+          display: flex;
+          flex-direction: column;
+          height: 100%;
           border: 1px solid var(--color-border);
-          border-radius: 8px;
-          overflow: hidden;
-          box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-          transition: transform 0.2s;
+          transition: transform 0.3s ease;
         }
-        .log-card:hover {
+        .review-card:hover {
           transform: translateY(-5px);
-          border-color: var(--color-primary);
+          border-color: var(--color-border-hover);
         }
-        .terminal-header {
-          background: #161b22;
-          padding: 0.5rem 1rem;
+        .stars {
+          color: var(--color-accent);
+          margin-bottom: 1.5rem;
+          font-size: 1.25rem;
+          letter-spacing: 2px;
+        }
+        .review-text {
+          font-size: 1.1rem;
+          line-height: 1.6;
+          color: var(--color-text);
+          margin-bottom: 2rem;
+          flex-grow: 1;
+        }
+        .reviewer {
           display: flex;
           align-items: center;
-          border-bottom: 1px solid var(--color-border);
+          gap: 1rem;
+          padding-top: 1.5rem;
+          border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
-        .terminal-header span {
-          margin-left: auto;
-          font-family: 'JetBrains Mono', monospace;
-          font-size: 0.75rem;
+        .avatar {
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          background: var(--color-primary);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 700;
+          color: white;
+          font-size: 1.1rem;
+        }
+        .name {
+          font-weight: 600;
+          color: white;
+          font-size: 1rem;
+        }
+        .role {
+          font-size: 0.85rem;
           color: var(--color-text-muted);
         }
-        .log-content {
-          padding: 1.5rem;
-          color: #a5d6ff;
-          font-family: 'JetBrains Mono', monospace;
-          font-size: 0.85rem;
-          white-space: pre-wrap;
+        .grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+          gap: 2rem;
         }
       `}</style>
     </section>

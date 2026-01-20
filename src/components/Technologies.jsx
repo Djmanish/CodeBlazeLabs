@@ -1,119 +1,153 @@
 import React from 'react';
 
-const TechCategory = ({ title, skills }) => (
-  <div className="tech-category">
-    <h4 className="tech-category-title">{title}</h4>
-    <div className="tech-list">
-      {skills.map((skill, index) => (
-        <span key={index} className="tech-pill">{skill}</span>
-      ))}
-    </div>
+const TechItem = ({ name, icon }) => (
+  <div className="tech-item" data-aos="zoom-in">
+    <div className="tech-icon">{icon}</div>
+    <span className="tech-name">{name}</span>
   </div>
 );
 
 const Technologies = () => {
   return (
-    <section id="technologies" className="section bg-tech">
+    <section id="technologies" className="section tech-section">
       <div className="container">
         <div className="section-header text-center" data-aos="fade-up">
-          <h2 className="section-title mono-font">{'<'} Tech_Stack {'/>'}</h2>
+          <div className="tech-badge-center">
+            <span className="badge-icon">⚡</span> Powering Your Growth
+          </div>
+          <h2 className="section-title">
+            Our <span className="text-highlight">Technology</span> Stack
+          </h2>
           <p className="section-subtitle">
-            <span className="comment">// Core dependencies and dev tools</span>
+            We use cutting-edge frameworks to build future-proof solutions.
           </p>
         </div>
 
-        <div className="tech-grid" data-aos="fade-up">
-          <TechCategory
-            title="frontend"
-            skills={['React', 'Next.js', 'TypeScript', 'Vite', 'Tailwind', 'Redux', 'Vue.js']}
-          />
-          <TechCategory
-            title="backend"
-            skills={['Node.js', 'Python', 'Django', 'FastAPI', 'Go', 'PostgreSQL', 'MongoDB']}
-          />
-          <TechCategory
-            title="ai_data"
-            skills={['LangChain', 'OpenAI', 'PyTorch', 'TensorFlow', 'Hugging Face', 'Pinecone']}
-          />
-          <TechCategory
-            title="devops"
-            skills={['AWS', 'Google Cloud', 'Docker', 'Kubernetes', 'Netlify', 'Vercel', 'CI/CD']}
-          />
+        <div className="tech-groups">
+          <div className="tech-group">
+            <h3>Frontend</h3>
+            <div className="tech-grid">
+              <TechItem name="React" icon="⚛️" />
+              <TechItem name="Next.js" icon="▲" />
+              <TechItem name="TypeScript" icon="TS" />
+              <TechItem name="Tailwind" icon="≋" />
+            </div>
+          </div>
+
+          <div className="divider"></div>
+
+          <div className="tech-group">
+            <h3>Backend & AI</h3>
+            <div className="tech-grid">
+              <TechItem name="Node.js" icon="🟢" />
+              <TechItem name="Python" icon="🐍" />
+              <TechItem name="FastAPI" icon="⚡" />
+              <TechItem name="OpenAI" icon="🧠" />
+            </div>
+          </div>
+
+          <div className="divider"></div>
+
+          <div className="tech-group">
+            <h3>Cloud & DevOps</h3>
+            <div className="tech-grid">
+              <TechItem name="AWS" icon="☁️" />
+              <TechItem name="Docker" icon="🐳" />
+              <TechItem name="Kubernetes" icon="⚓" />
+              <TechItem name="Vercel" icon="▲" />
+            </div>
+          </div>
         </div>
       </div>
 
       <style>{`
-        .bg-tech {
+        .tech-section {
           background-color: var(--color-bg);
-          border-top: 1px solid var(--color-border);
-          border-bottom: 1px solid var(--color-border);
+          padding-bottom: 8rem;
         }
+
+        .tech-badge-center {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          background: rgba(255, 255, 255, 0.05);
+          padding: 8px 20px;
+          border-radius: 20px;
+          font-size: 14px;
+          font-weight: 600;
+          color: var(--color-accent);
+          margin-bottom: 1.5rem;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+        }
+        
+        .tech-groups {
+          display: flex;
+          justify-content: center;
+          align-items: flex-start;
+          gap: 3rem;
+          margin-top: 4rem;
+        }
+
+        .tech-group h3 {
+          text-align: center;
+          font-size: 1.25rem;
+          margin-bottom: 2rem;
+          color: white;
+          font-family: var(--font-heading);
+        }
+
         .tech-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-          gap: 2rem;
-          margin-top: 2rem;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1.5rem;
         }
-        .tech-category {
-          padding: 1.5rem;
-          border: 1px solid var(--color-border);
-          border-radius: 6px;
-          background: #0d1117;
-          position: relative;
+
+        .divider {
+          width: 1px;
+          height: 200px;
+          background: rgba(255,255,255,0.1);
+          align-self: center;
         }
-        .tech-category::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 2px;
-          background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
-          opacity: 0.5;
-        }
-        .tech-category-title {
-          color: var(--color-accent);
-          margin-bottom: 1rem;
-          font-family: 'JetBrains Mono', monospace;
-          font-size: 1rem;
-        }
-        .tech-category-title::before {
-          content: '"';
-          color: var(--color-text-muted);
-        }
-        .tech-category-title::after {
-          content: '": [';
-          color: var(--color-text-muted);
-        }
-        .tech-list {
+
+        .tech-item {
           display: flex;
-          flex-wrap: wrap;
-          gap: 0.75rem;
-          padding-left: 1rem;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          width: 100px;
+          height: 100px;
+          background: var(--color-bg-alt);
+          border-radius: 16px;
+          border: 1px solid rgba(255,255,255,0.05);
+          transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease, box-shadow 0.3s ease;
         }
-        .tech-pill {
-          font-family: 'JetBrains Mono', monospace;
-          font-size: 0.85rem;
-          color: var(--color-code-string);
-          transition: all var(--transition-fast);
-          cursor: default;
+        .tech-item:hover {
+          transform: translateY(-5px);
+          border-color: var(--color-primary);
+          box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
-        .tech-pill::before {
-          content: '"';
+
+        .tech-icon {
+          font-size: 2rem;
+          margin-bottom: 0.5rem;
+        }
+        .tech-name {
+          font-size: 0.8rem;
           color: var(--color-text-muted);
+          font-weight: 500;
         }
-        .tech-pill::after {
-          content: '",';
-          color: var(--color-text-muted);
-        }
-        .tech-pill:hover {
-          color: var(--color-primary);
-          text-shadow: 0 0 8px rgba(255, 95, 31, 0.4);
-        }
-        .section-subtitle {
-           font-family: 'JetBrains Mono', monospace;
-           color: var(--color-code-comment);
-           font-size: 0.9rem;
+
+        @media (max-width: 900px) {
+          .tech-groups {
+            flex-direction: column;
+            align-items: center;
+          }
+          .divider {
+            width: 100px;
+            height: 1px;
+            background: rgba(255,255,255,0.1);
+          }
         }
       `}</style>
     </section>

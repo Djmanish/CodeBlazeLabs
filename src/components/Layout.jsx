@@ -20,7 +20,7 @@ const Layout = ({ children }) => {
             <button onClick={() => scrollToSection('technologies')} className="nav-link">Tech Stack</button>
             <button onClick={() => scrollToSection('services')} className="nav-link">Services</button>
             <button onClick={() => scrollToSection('contact')} className="btn btn-primary">
-              Contact Us
+              Get In Touch
             </button>
           </nav>
         </div>
@@ -29,29 +29,44 @@ const Layout = ({ children }) => {
       <main>{children}</main>
 
       <footer className="footer">
-        <div className="container status-bar">
-          <div className="status-item">
-            <span className="status-indicator online"></span>
-            <span>System Status: Operational</span>
+        <div className="container">
+          <div className="footer-content">
+            <div className="footer-brand">
+              <Logo />
+              <p className="footer-desc">
+                Building the future of digital software with intelligent algorithms and scalable architecture.
+              </p>
+            </div>
+            <div className="footer-links">
+              <div className="link-col">
+                <h4>Company</h4>
+                <button onClick={() => scrollToSection('about')}>About</button>
+                <button onClick={() => scrollToSection('services')}>Services</button>
+                <button onClick={() => scrollToSection('contact')}>Contact</button>
+              </div>
+              <div className="link-col">
+                <h4>Connect</h4>
+                <a href="#linkedin">LinkedIn</a>
+                <a href="#twitter">Twitter / X</a>
+                <a href="#github">GitHub</a>
+              </div>
+            </div>
           </div>
-          <div className="status-item">
-            <span>Branch: main</span>
-          </div>
-          <div className="status-item">
-            © {new Date().getFullYear()} CodeBlazeLabs
+          <div className="footer-bottom">
+            <p>© {new Date().getFullYear()} CodeBlazeLabs. All rights reserved.</p>
           </div>
         </div>
       </footer>
 
       <style>{`
         .header {
-          padding: 1.5rem 0;
+          padding: 1rem 0;
           position: sticky;
           top: 0;
-          background: rgba(13, 17, 23, 0.9);
-          backdrop-filter: blur(10px);
+          background: rgba(11, 25, 44, 0.85); /* Navy transparent */
+          backdrop-filter: blur(12px);
           z-index: 100;
-          border-bottom: 1px solid var(--color-border);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
         .header-container {
           display: flex;
@@ -61,40 +76,82 @@ const Layout = ({ children }) => {
         .nav-menu {
           display: flex;
           align-items: center;
-          gap: 1.5rem;
+          gap: 2.5rem;
         }
         .nav-link {
-          font-family: 'JetBrains Mono', monospace;
+          font-family: var(--font-body);
           font-weight: 500;
           color: var(--color-text);
-          font-size: 0.85rem;
+          font-size: 1rem;
+          background: none;
+          border: none;
+          cursor: pointer;
+          transition: color 0.3s ease;
         }
         .nav-link:hover {
-          color: var(--color-primary);
+          color: var(--color-accent);
         }
+        
         .footer {
           background: var(--color-bg-alt);
+          padding: 5rem 0 2rem;
+          margin-top: 0;
           border-top: 1px solid var(--color-border);
-          padding: 0.5rem 0;
-          margin-top: 4rem;
         }
-        .status-bar {
-          display: flex;
-          justify-content: space-between;
-          font-family: 'JetBrains Mono', monospace;
-          font-size: 0.75rem;
+        .footer-content {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 4rem;
+          margin-bottom: 4rem;
+        }
+        .footer-brand {
+          max-width: 400px;
+        }
+        .footer-desc {
+          margin-top: 1.5rem;
           color: var(--color-text-muted);
         }
-        .status-item {
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
+        .footer-links {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
         }
-        .status-indicator {
-          width: 8px;
-          height: 8px;
-          border-radius: 50%;
-          background: #3fb950;
+        .link-col h4 {
+          font-family: var(--font-heading);
+          color: white;
+          margin-bottom: 1.5rem;
+          font-size: 1.2rem;
+        }
+        .link-col button, .link-col a {
+          display: block;
+          background: none;
+          border: none;
+          color: var(--color-text-muted);
+          margin-bottom: 0.8rem;
+          cursor: pointer;
+          font-size: 1rem;
+          transition: color 0.2s;
+          text-align: left;
+          padding: 0;
+        }
+        .link-col button:hover, .link-col a:hover {
+          color: var(--color-accent);
+        }
+        .footer-bottom {
+          border-top: 1px solid rgba(255, 255, 255, 0.05);
+          padding-top: 2rem;
+          text-align: center;
+          color: var(--color-text-muted);
+          font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+          .footer-content {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+          }
+          .nav-menu {
+            display: none; /* Mobile menu TODO */
+          }
         }
       `}</style>
     </div>
