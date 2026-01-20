@@ -1,5 +1,6 @@
 import React from 'react';
 import Logo from './Logo';
+import FloatingNav from './FloatingNav';
 
 const Layout = ({ children }) => {
   const scrollToSection = (id) => {
@@ -11,22 +12,9 @@ const Layout = ({ children }) => {
 
   return (
     <div className="layout">
-      <header className="header">
-        <div className="container header-container">
-          <Logo />
-          <nav className="nav-menu">
-            <button onClick={() => scrollToSection('root')} className="nav-link">Home</button>
-            <button onClick={() => scrollToSection('about')} className="nav-link">About</button>
-            <button onClick={() => scrollToSection('technologies')} className="nav-link">Tech Stack</button>
-            <button onClick={() => scrollToSection('services')} className="nav-link">Services</button>
-            <button onClick={() => scrollToSection('contact')} className="btn btn-primary">
-              Get In Touch
-            </button>
-          </nav>
-        </div>
-      </header>
 
       <main>{children}</main>
+      <FloatingNav />
 
       <footer className="footer">
         <div className="container">

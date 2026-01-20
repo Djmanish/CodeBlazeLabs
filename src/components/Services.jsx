@@ -1,21 +1,20 @@
 import React from 'react';
 
-const ServiceItem = ({ number, title, description, features, delay }) => (
-  <div className="service-item" data-aos="fade-up" data-aos-delay={delay}>
-    <div className="service-number text-outline">{number}</div>
-    <div className="service-content">
-      <h3 className="service-title">{title}</h3>
-      <p className="service-desc">{description}</p>
-      <ul className="service-features">
+const ServiceItem = ({ number, title, description, features }) => (
+  <div className="service-item-row" data-aos="fade-up">
+    <div className="service-header">
+      <span className="service-num">{number}</span>
+      <h3 className="service-title-large">{title}</h3>
+      <span className="service-arrow">→</span>
+    </div>
+
+    <div className="service-body">
+      <p className="service-desc-large">{description}</p>
+      <div className="service-tags">
         {features.map((feature, index) => (
-          <li key={index}>
-            <span className="sc-icon">✦</span> {feature}
-          </li>
+          <span key={index} className="service-tag">{feature}</span>
         ))}
-      </ul>
-      <button className="btn-text">
-        Read More <span className="arrow">→</span>
-      </button>
+      </div>
     </div>
   </div>
 );
@@ -23,163 +22,189 @@ const ServiceItem = ({ number, title, description, features, delay }) => (
 const Services = () => {
   return (
     <section id="services" className="section services-section">
+      <div className="services-vignette"></div>
+
       <div className="container">
         <div className="section-header text-center" data-aos="fade-up">
           <div className="tech-badge-center">
             <span className="badge-icon">❖</span> Our Expertise
           </div>
-          <h2 className="section-title">
-            High-End <span className="text-highlight">Services</span> <br />
-            For Digital Growth
+          <h2 className="section-title-large">
+            HIGH-END <span className="text-stroke">SERVICES</span>
           </h2>
         </div>
 
-        <div className="services-list">
+        <div className="services-list-container">
           <ServiceItem
             number="01"
-            title="Custom Software Development"
-            description="We build robust, scalable, and secure software solutions tailored to your unique business needs."
-            features={['Enterprise Application Architecture', 'Cloud-Native Solutions', 'Legacy System Modernization']}
-            delay="0"
+            title="CUSTOM SOFTWARE"
+            description="Robust, scalable, and secure software solutions tailored to your unique business needs."
+            features={['Enterprise Architecture', 'Cloud-Native', 'Legacy Modernization']}
           />
           <ServiceItem
             number="02"
-            title="AI & Machine Learning"
-            description="Leverage the power of artificial intelligence to automate processes and gain actionable insights."
-            features={['Predictive Analytics Models', 'Natural Language Processing', 'Computer Vision Systems']}
-            delay="100"
+            title="AI & MACHINE LEARNING"
+            description="Automate processes and gain actionable insights with cutting-edge AI integration."
+            features={['Predictive Analytics', 'NLP Models', 'Computer Vision']}
           />
           <ServiceItem
             number="03"
-            title="Product Design & Strategy"
-            description="From concept to launch, we design user-centric products that drive engagement and retention."
-            features={['UX/UI Design Systems', 'User Research & Testing', 'Product Roadmap Strategy']}
-            delay="200"
+            title="PRODUCT STRATEGY"
+            description="User-centric product design that drives engagement, retention, and growth."
+            features={['UX/UI Design', 'User Research', 'Roadmap Strategy']}
+          />
+          <ServiceItem
+            number="04"
+            title="AGENTIC AI SYSTEMS"
+            description="Next-generation autonomous agents that perform complex tasks with minimal oversight."
+            features={['Autonomous Workflows', 'Multi-Agent Systems', 'Cognitive Automation']}
           />
         </div>
       </div>
 
       <style>{`
         .services-section {
-          background-color: var(--color-bg);
+          background-color: #050A14;
+          padding: 8rem 0;
           position: relative;
-        }
-
-        .tech-badge-center {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          background: rgba(255, 255, 255, 0.05);
-          padding: 8px 20px;
-          border-radius: 20px;
-          font-size: 14px;
-          font-weight: 600;
-          color: var(--color-accent);
-          margin-bottom: 1.5rem;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-        }
-
-        .section-title {
-          font-size: 3rem;
-          margin-bottom: 4rem;
-        }
-        
-        .services-list {
-          display: flex;
-          flex-direction: column;
-          gap: 2rem;
-        }
-
-        .service-item {
-          display: grid;
-          grid-template-columns: 150px 1fr;
-          gap: 3rem;
-          padding: 4rem;
-          background: var(--color-bg-alt);
-          border-radius: 30px;
-          transition: transform 0.3s ease, border-color 0.3s ease;
-          border: 1px solid rgba(255, 255, 255, 0.03);
-          position: relative;
+          color: white;
           overflow: hidden;
         }
         
-        .service-item:hover {
-          transform: translateY(-5px);
-          border-color: rgba(96, 101, 212, 0.3);
-          box-shadow: 0 20px 60px -10px rgba(0,0,0,0.3);
+        .services-vignette {
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(circle at center, transparent 20%, #050A14 90%);
+          pointer-events: none;
         }
 
-        .service-features {
-          list-style: none;
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-          gap: 1.5rem;
-          margin-bottom: 2.5rem;
-        }
-        .service-features li {
-          font-family: var(--font-body);
-          font-size: 1rem;
-          color: var(--color-text);
-          display: flex;
-          align-items: center;
-        }
-        .sc-icon {
-          color: var(--color-primary);
-          margin-right: 12px;
-          font-size: 1.2rem;
-        }
-
-        .service-number {
-          font-family: var(--font-heading);
-          font-size: 5rem;
-          font-weight: 700;
-          color: transparent;
-          -webkit-text-stroke: 1px var(--color-primary);
-          line-height: 1;
-          transition: all 0.3s ease;
-          opacity: 1; /* Fully visible orange by default */
-        }
-        .service-item:hover .service-number {
-          text-shadow: 0 0 15px var(--color-primary), 0 0 30px var(--color-secondary);
-          transform: scale(1.05); /* Subtle pop */
-        }
-
-        .btn-text {
-          background: none;
-          border: none;
-          color: white;
-          font-weight: 700;
+        .section-title-large {
+          font-family: 'Space Grotesk', sans-serif;
+          font-size: clamp(3rem, 6vw, 6rem);
           text-transform: uppercase;
-          font-size: 0.9rem;
+          line-height: 0.9;
+          margin-bottom: 4rem;
+          position: relative;
+          z-index: 2;
+        }
+
+        .services-list-container {
+          display: flex;
+          flex-direction: column;
+          position: relative;
+          z-index: 2;
+        }
+
+        /* List Item Styling */
+        .service-item-row {
+          border-top: 1px solid rgba(255,255,255,0.1);
+          padding: 3rem 0;
+          transition: all 0.4s ease;
           cursor: pointer;
-          display: inline-flex;
-          align-items: center;
-          gap: 1rem;
-          transition: color 0.3s;
-          padding: 0;
-          letter-spacing: 1px;
         }
-        .btn-text .arrow {
+        .service-item-row:last-child {
+          border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .service-item-row:hover {
+          background: rgba(249, 115, 22, 0.03); /* Subtle orange tint */
+          padding-left: 2rem; /* Slide effect */
+          border-color: rgba(249, 115, 22, 0.4);
+        }
+
+        .service-header {
+          display: flex;
+          align-items: baseline;
+          justify-content: space-between;
+          margin-bottom: 1.5rem;
+        }
+
+        .service-num {
+          font-family: var(--font-heading);
           font-size: 1.2rem;
-          transition: transform 0.3s;
+          color: var(--color-primary);
+          margin-right: 2rem;
+          opacity: 0.7;
         }
-        .btn-text:hover {
+
+        .service-title-large {
+          font-family: 'Space Grotesk', sans-serif;
+          font-size: clamp(2rem, 4vw, 3.5rem);
+          font-weight: 700;
+          color: white;
+          flex-grow: 1;
+          margin: 0;
+          transition: color 0.3s;
+        }
+        
+        .service-item-row:hover .service-title-large {
+          color: var(--color-primary); /* Turn orange on hover */
+        }
+
+        .service-arrow {
+          font-size: 2rem;
+          color: var(--color-text-muted);
+          transform: rotate(-45deg);
+          transition: transform 0.4s, color 0.4s;
+        }
+        .service-item-row:hover .service-arrow {
+          transform: rotate(0deg);
           color: var(--color-primary);
         }
-        .btn-text:hover .arrow {
-          transform: translateX(5px);
+
+        /* Body (Description & Tags) */
+        .service-body {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 2rem;
+          padding-left: 4rem; /* Align with title */
+          opacity: 0.6;
+          transition: opacity 0.4s;
+        }
+        .service-item-row:hover .service-body {
+          opacity: 1;
+        }
+
+        .service-desc-large {
+          font-size: 1.1rem;
+          line-height: 1.6;
+          color: var(--color-text-muted);
+        }
+
+        .service-tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          justify-content: flex-end;
+        }
+
+        .service-tag {
+          font-size: 0.85rem;
+          border: 1px solid rgba(255,255,255,0.2);
+          padding: 6px 16px;
+          border-radius: 100px;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          color: var(--color-text-muted);
+          transition: all 0.3s;
+        }
+        .service-item-row:hover .service-tag {
+          border-color: var(--color-primary);
+          color: white;
+          background: rgba(249, 115, 22, 0.1);
         }
 
         @media (max-width: 900px) {
-          .service-item {
+          .service-body {
             grid-template-columns: 1fr;
+            padding-left: 0;
             gap: 1.5rem;
-            padding: 2.5rem;
           }
-          .service-number {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+          .service-tags {
+            justify-content: flex-start;
+          }
+          .service-item-row:hover {
+            padding-left: 1rem;
           }
         }
       `}</style>
